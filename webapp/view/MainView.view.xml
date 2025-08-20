@@ -1,0 +1,80 @@
+<mvc:View controllerName="com.training.exer1bernaldo.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock= "true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page" title="{i18n>title}" floatingFooter="true">
+    <VBox id="idvBox" class="sapUiSmallMargin">
+        <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Details" labelSpanXL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+                        emptySpanS="0"  columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+            <f:content>
+                <Label id="idLblFName" text="{i18n>firstNameLbl}" />
+                <Input id="idInptFName" value="" />
+                <Label id="idLblName" text="{i18n>lastName}" />
+                <Input id="idInptLName" value="" />
+                <Label id="idLblMOP" text="{i18n>mop}" />
+                  <Select id="idSelMOP" forceSelection="false" change="onChangeMOP">
+                    <items>
+                        <core:Item id="idItmCOD" text="{i18n>cod}" key="Cash on Delivery"/>
+                        <core:Item id="idItmCC" text="{i18n>creditCard}" key="Credit Card"/>
+                        <core:Item id="idItmGcash" text="{i18n>gcash}" key="GCash"/>
+                    </items>
+                   </Select>
+
+                   <Label id ="idLblPhone" text="{i18n>mobileNumber}" visible="false" />
+                   <Input id ="idInputPhone" value="" visible="false" />
+
+                   <Label id="idLblCC" text="{i18n>ccDetails}" visible="false" />
+                   <Input id="idInputCC" value="" visible="false" />
+            </f:content>
+    </f:SimpleForm>
+
+        <Table id="idTableSCart" inset="false">
+        <headerToolbar>
+            <OverflowToolbar id="idOFT">
+                <content>
+                    <Title id="idTableTitleSCart" text="{i18n>shoppingCart}"/>
+                    <ToolbarSpacer id="idTSpacer" />
+                    <Button id="idBtnAddItems" icon="sap-icon://cart-4" tooltip="Add to Cart" press="onAddItem"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="idCol1">
+                <Text id="idColText1" text="{i18n>txtItem}" />
+            </Column>
+            <Column id="idCol2">
+                <Text id ="idColText2" text="{i18n>txtQty}" />
+            </Column>
+            <Column id="idCol3">
+                <Text id="idColText3" text="{i18n>txtPrice}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem id="idColListItem1" vAlign="Middle">
+                <cells>
+                    <Text id="idText1" text="{i18n>ip14ProMax}" />
+                    <Text id="idText2" text="{i18n>qty2}" />
+                    <Text id="idText3" text="{i18n>priceip14}" />
+                </cells>
+            </ColumnListItem>
+
+            <ColumnListItem id="idColListItem2" vAlign="Middle">
+                <cells>
+                    <Text id="idText4" text="{i18n>lv}" />
+                    <Text id="idText5" text="{i18n>qty1}" />
+                    <Text id="idText6" text="{i18n>pricelv}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    </VBox>
+        <footer>
+        <OverflowToolbar id="idOFTFooter">
+            <ToolbarSpacer id="idTSpacerFooter" />
+            <Button id="idBtnCheckout" text="{i18n>checkOut}" tooltip="Check Out" press="onPressCheckout"/>
+        </OverflowToolbar>
+    </footer>
+    </Page>
+</mvc:View>
