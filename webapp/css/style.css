@@ -1,1 +1,23 @@
 /* Enter your custom styles here */
+
+.custPage .sapMBarPH {
+background: #f0dfe5;
+background: radial-gradient(circle, rgba(240, 223, 229, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+.custPage .sapMIBar-CTX .sapMTitle {
+    color: #123185d0;
+    text-shadow: whitesmoke;
+}
+.custPage .sapMPageFooter .sapMIBar-CTX.sapMFooter-CTX.sapMTB {
+background: #f0dfe5;
+background: radial-gradient(circle, rgba(240, 223, 229, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+
+.custDialog.sapMDialog header .sapMBarPH {
+background: #f0dfe5;
+background: radial-gradient(circle, rgba(240, 223, 229, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+.custDialog.sapMDialog>header .sapMDialogTitleGroup .sapMTitle {
+    color: #216eba;
+    vertical-align: middle;
+}
