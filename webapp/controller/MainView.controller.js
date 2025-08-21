@@ -18,11 +18,23 @@ sap.ui.define([
         },
     
         onAddItem: function (){
-            var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-            var sMsg = oTextBundle.getText("addButtonMsg");
+            // Comment this code for now
+            // var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            // var sMsg = oTextBundle.getText("addButtonMsg");
+            // this.fnDisplayMsg(sMsg);
 
-            this.fnDisplayMsg(sMsg);
-
+            // Instantiate the fragment
+            // create dialog lazily
+            if (!this.oDialog) {
+                // By using loadFragment, we are adding the fragment as a dependent to the View
+                // By doing so, we can use the functions inside the view's controller
+                this.oDialog = this.loadFragment({
+                    name: "com.training.exer1bernaldo.fragment.ProductDialog"
+                });
+            }
+            this.oDialog.then(function(oDialog){
+                oDialog.open();
+            });
         },
 
         fnDisplayMsg: function (sMsg){
@@ -68,15 +80,31 @@ sap.ui.define([
             var oInputFnameValue = oInputFName.getValue();
             var oInputLnameValue = oInputLName.getValue();
 
-            let oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            // Comment out for now
+            // let oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            
+            var oRouter = this.getOwnerComponent().getRouter();
 
-            //Check if both first name and last name are blank
+            // Check if both first name and last name are blank
             if (oInputFnameValue === "" && oInputLnameValue === ""){
-                 MessageBox.error(oBundle.getText("validateNameMsg"));
-            } else {
+               //  MessageBox.error(oBundle.getText("validateNameMsg"));
 
-                 } 
+               oInputFName.setValueState("Error");
+               oInputLName.setValueState("Error");
+            } else {
+               oInputFName.setValueState("None");
+               oInputFName.setValueState("None");
+
+                    //Navigate to review page passing first
+                    oRouter.navTo("RouteReviewPage", {
+                        firstName: oInputFnameValue
+                    });
+            } 
         },
+
+        onCloseDialog: function (){
+            this.getView().byId("idProductDialog").close();
+        }
 
     });
 });
